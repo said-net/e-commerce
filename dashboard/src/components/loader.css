@@ -1,0 +1,33 @@
+.loading {
+  width: 100px;
+  height: 100px;
+  border: 4px solid #fff;
+  border-bottom: 0.2px solid #fff8f8;
+  border-right: 0.2px solid #fff8f8;
+  transition: all .3s;
+  border-radius: 100px;
+  cursor: pointer;
+  animation: load 1s infinite cubic-bezier(0.5, 0.5, 0.5, 0.5);
+}
+
+.loading:hover {
+  scale: 0.90;
+}
+
+.loading:active {
+  scale: 0.80;
+}
+
+@keyframes load {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  50% {
+    transform: rotateZ(180deg);
+  }
+
+  100% {
+    transform: rotateZ(360deg);
+  }
+}

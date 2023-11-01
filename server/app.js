@@ -1,0 +1,16 @@
+process.env.NODE_ENV !== 'production' && require('dotenv').config();
+const express = require('express');
+const app = express();
+const cors = require('cors');
+const fileUpload = require('express-fileupload');
+const mongoose = require('mongoose');
+const { DB_CONNECTION_STRING, APP_PORT } = require('./src/configs/env.config');
+const router = require('./src/router');
+require('./src/controllers/admin.controller').default();
+mongoose.connect(DB_CONNECTION_STRING);
+app.use(fileUpload());
+app.use(cors());
+app.use(express.json());
+app.use('/uploads', express.static('uploads'));
+app.use('/api', router);
+app.listen(APP_PORT);
